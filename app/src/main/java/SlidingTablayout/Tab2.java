@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.emd029.sqlite_task.DbHandler;
-import com.example.emd029.sqlite_task.Hai;
+import com.example.emd029.sqlite_task.Global;
+import com.example.emd029.sqlite_task.BaseAdapter_list;
 import com.example.emd029.sqlite_task.R;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class Tab2 extends Fragment {
     //creating a fragment for a viewpager tabview
     ListView listView2;
-    Hai hai;
+    BaseAdapter_list baseAdapterlist;
     Context context;
     ArrayList<String > na;
     public Tab2(Context context){
@@ -32,12 +33,16 @@ public class Tab2 extends Fragment {
         ViewGroup view= (ViewGroup) inflater.inflate(R.layout.tab2,group,false);
         listView2= (ListView) view.findViewById(R.id.listView2);
         DbHandler dbHandler=new DbHandler(context);
-        //get a data into a arraylist by calling a method in a DbHandler
-        na=dbHandler.getalldatas();
+        if (Global.search_STATUS){
+            na=dbHandler.searchByInputText(Global.ssignment_STATUS);
+        }else {
+            //get a data into a arraylist by calling a method in a DbHandler
+            na = dbHandler.getalldatas();
+        }
         //pass a arraylist into a base adapter class Hai
-        hai=new Hai(context,na);
+        baseAdapterlist =new BaseAdapter_list(context,na);
         //set a adapter into a listview using a baseadapter class object hai
-        listView2.setAdapter(hai);
+        listView2.setAdapter(baseAdapterlist);
         return view;
     }
 }

@@ -1,17 +1,39 @@
 package com.example.emd029.sqlite_task;
 
 
+import android.app.ActionBar;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import SlidingTablayout.SlidingTabLayout;
+import SlidingTablayout.Tab1;
 import SlidingTablayout.ViewPagerAdapter;
 
-public class Sqlite_MainActivity extends ActionBarActivity {
+public class Sqlite_MainActivity extends AppCompatActivity {
 //TextView textView;
+    EditText editText;
     Toolbar toolbar;
     ViewPager viewPager;
     ViewPagerAdapter adapter;
@@ -21,11 +43,15 @@ public class Sqlite_MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_sqlite__main);
+        DbHandler handler=new DbHandler(this);
+        handler.deletealldata();
         database();
         //set a toolbar as a action bar
         toolbar= (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        Global.search_STATUS = false;
         //seta view pager by passing a adapter of a view page adapter class that contains a position of fragments
         adapter=new ViewPagerAdapter(getSupportFragmentManager(),Titles,NumofTabs,Sqlite_MainActivity.this);
 
@@ -41,9 +67,26 @@ public class Sqlite_MainActivity extends ActionBarActivity {
            }
        });
         slidingTabLayout.setViewPager(viewPager);
-
-        }
-
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        // Set an OnMenuItemClickListener to handle menu item clicks
+      /**********  toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_search:
+                        Toast.makeText(Sqlite_MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
+                        //startActivity(new Intent(Sqlite_MainActivity.this,SearchResultsActivity.class));
+                        break;
+                    case R.id.action_settings:
+                        Toast.makeText(getApplicationContext(), "Filter", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });********************************/
+        // Inflate a menu to be displayed in the toolbar
+       // toolbar.inflateMenu(R.menu.menu_sqlite__main);
+    }
     public void database(){
         //calling a DbHandler database class
         DbHandler handler=new DbHandler(Sqlite_MainActivity.this);
@@ -77,13 +120,41 @@ public class Sqlite_MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sqlite__main, menu);
-        return true;
+        toolbar.inflateMenu(R.menu.menu_sqlite__main);
+        SearchView mSearchView = (SearchView) toolbar.getMenu().findItem(R.id.action_search).getActionView();
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            DbHandler dbHandler=new DbHandler(Sqlite_MainActivity.this);
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //Toast.makeText(Sqlite_MainActivity.this, query, Toast.LENGTH_SHORT).show();
+               // displayResults(query);
+
+                return true;
+            }
+            private void displayResults(String query) {
+               // Cursor cursor = dbHandler.searchByInputText((query != null ? query : "@@@@"));
+// int cnt = cursor.getCount();
+                   // Toast.makeText(Sqlite_MainActivity.this,Integer.toString(cnt),Toast.LENGTH_LONG).show();
+                    Global.search_STATUS = true;
+                    Global.ssignment_STATUS = query;
+                    adapter=new ViewPagerAdapter(getSupportFragmentManager(),Titles,NumofTabs,Sqlite_MainActivity.this);
+                    viewPager.setAdapter(adapter);
+
+
+            }
+            @Override
+            public boolean onQueryTextChange(String query) {
+                displayResults(query);
+                return true;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    //@Override
+  /*  public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -94,6 +165,7 @@ public class Sqlite_MainActivity extends ActionBarActivity {
             return true;
         }
 
+
         return super.onOptionsItemSelected(item);
-    }
-}
+    }*/
+
