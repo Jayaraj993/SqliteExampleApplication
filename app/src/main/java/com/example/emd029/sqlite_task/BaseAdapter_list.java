@@ -19,10 +19,12 @@ public class BaseAdapter_list extends BaseAdapter {
     //just use a base adapter in a common for all
     Context context;
     ArrayList<String> list=new ArrayList<String >();
+
     public BaseAdapter_list(Context context, ArrayList<String> list){
         this.context=context;
         this.list=list;
     }
+
     @Override
     public int getCount() {
         return list.size();
