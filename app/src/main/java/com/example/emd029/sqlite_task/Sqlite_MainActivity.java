@@ -20,7 +20,6 @@ public class Sqlite_MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     ViewPagerAdapter adapter;
     SlidingTabLayout slidingTabLayout;
-    CharSequence Titles[]={"homes","events"};
     int NumofTabs=2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,7 @@ public class Sqlite_MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Global.search_STATUS = false;
         //seta view pager by passing a adapter of a view page adapter class that contains a position of fragments
-        adapter=new ViewPagerAdapter(getSupportFragmentManager(),Titles,NumofTabs,Sqlite_MainActivity.this);
+        adapter=new ViewPagerAdapter(getSupportFragmentManager());
 
         viewPager= (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
@@ -119,7 +118,7 @@ public class Sqlite_MainActivity extends AppCompatActivity {
                    // Toast.makeText(Sqlite_MainActivity.this,Integer.toString(cnt),Toast.LENGTH_LONG).show();
                     Global.search_STATUS = true;
                     Global.ssignment_STATUS = query;
-                    adapter=new ViewPagerAdapter(getSupportFragmentManager(),Titles,NumofTabs,Sqlite_MainActivity.this);
+                    adapter=new ViewPagerAdapter(getSupportFragmentManager());
                     viewPager.setAdapter(adapter);
 
 

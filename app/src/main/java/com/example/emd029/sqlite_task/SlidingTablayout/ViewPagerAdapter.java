@@ -9,38 +9,40 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 /**
  * Created by EMD029 on 6/4/2015.
  */
-public class ViewPagerAdapter extends FragmentStatePagerAdapter{
-    CharSequence Titles[];
-    int NumofTabs;
-    Context context;
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[],int mNumofTabs,Context context){
-        //passing a titles and number of tab view
+    CharSequence Titles[]={"homes","events"};
+
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
-        this.Titles=mTitles;
-        this.NumofTabs=mNumofTabs;
-        this.context = context;
     }
+
     //set a fragment depend on a position
     @Override
-     public Fragment getItem(int position) {
-        if (position==0){
-            Tab1 tab1=new Tab1(context);
-            return tab1;
+    public Fragment getItem(int position) {
+        Fragment fragment;
 
-        }else{
-            Tab2 tab2=new Tab2(context);
-            return tab2;
+        switch (position) {
+            case 0:
+                fragment = new Tab1();
+                break;
+            case 1:
+                fragment = new Tab2();
+                break;
+            default:
+                fragment = new Tab1();
+                break;
         }
-
+        return fragment;
     }
-@Override
-public CharSequence getPageTitle(int position){
-    return Titles[position];
-}
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return Titles[position];
+    }
 
     @Override
     public int getCount() {
-        return NumofTabs;
+        return Titles.length;
     }
 }

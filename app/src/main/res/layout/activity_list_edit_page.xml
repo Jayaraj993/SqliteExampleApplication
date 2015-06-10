@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+
+        tools:context="com.example.emd029.sqlite_task.ListNewPage.ListEditPage">
+
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:id="@+id/Name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="44dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:id="@+id/PersonName"
+            android:layout_alignBaseline="@+id/Name"
+            android:layout_toRightOf="@+id/Name"
+            android:hint="Name"
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            android:id="@+id/subject"
+            android:layout_below="@+id/PersonName"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="64dp" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:id="@+id/date"
+            android:layout_below="@+id/subject"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="44dp"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Current date "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/dateshow"
+            android:layout_below="@+id/subjectName"
+            android:layout_alignBaseline="@+id/date"
+            android:layout_toRightOf="@+id/date"
+            android:layout_marginLeft="44dp"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text=">"
+            android:id="@+id/datebutton"
+            android:layout_alignBaseline="@+id/dateshow"
+            android:layout_marginLeft="20dp"
+            android:onClick="dateClickFunction"
+            android:layout_toRightOf="@+id/dateshow"
+            />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:id="@+id/time"
+            android:layout_below="@+id/date"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="44dp"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Current time "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/timeshow"
+            android:layout_below="@+id/dateshow"
+            android:layout_alignBaseline="@+id/time"
+            android:layout_toRightOf="@+id/time"
+            android:layout_marginLeft="44dp"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text=">"
+            android:id="@+id/timebutton"
+            android:onClick="timeClickFunction"
+            android:layout_alignBaseline="@+id/timeshow"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/timeshow"
+            />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:id="@+id/status"
+            android:layout_below="@+id/time"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="54dp"
+            />
+
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:id="@+id/description"
+            android:layout_below="@+id/status"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="44dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/descriptionview"
+            android:layout_toRightOf="@+id/description"
+            android:layout_below="@+id/spinnerstatusview"
+            android:layout_alignBaseline="@+id/description"
+            android:hint="Type Description"
+            android:ems="10"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="20dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok"
+            android:id="@+id/okbutton"
+            android:layout_below="@+id/descriptionview"
+            android:layout_toLeftOf="@+id/spinnerstatusview"
+            android:layout_toStartOf="@+id/spinnerstatusview"
+            android:layout_marginTop="34dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/cancelbutton"
+            android:layout_alignBaseline="@+id/okbutton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/descriptionview"
+            android:layout_alignEnd="@+id/descriptionview" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerstatusview"
+            android:text="set Status"
+            android:ems="10"
+            android:entries="@array/spinner"
+            android:layout_alignBottom="@+id/status"
+            android:layout_alignLeft="@+id/timeshow"
+            android:layout_alignStart="@+id/timeshow" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/subjectName"
+            android:entries="@array/subject"
+            android:layout_alignBottom="@+id/subject"
+            android:layout_alignRight="@+id/cancelbutton"
+            android:layout_alignEnd="@+id/cancelbutton"
+            android:layout_toEndOf="@+id/description"
+            android:layout_toRightOf="@+id/description" />
+
+
+
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

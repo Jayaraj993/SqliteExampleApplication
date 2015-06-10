@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Created by EMD029 on 6/5/2015.
  */
 public class BaseAdapter_list extends BaseAdapter {
+    public TextView mTVItem;
     //creating a class using base adapter
     //just use a base adapter in a common for all
     Context context;
@@ -49,11 +50,12 @@ public class BaseAdapter_list extends BaseAdapter {
         } else {
             viewHolder = (CompleteListViewHolder) v.getTag();
         }
-        viewHolder.mTVItem.setText(list.get(position));
+        //viewHolder.
+         mTVItem.setText(list.get(position));
         return v;
     }
     class CompleteListViewHolder {
-        public TextView mTVItem;
+
         public CompleteListViewHolder(View base) {
             mTVItem = (TextView) base.findViewById(R.id.textView);
         }
