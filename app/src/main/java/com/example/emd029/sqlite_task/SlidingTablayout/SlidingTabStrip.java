@@ -1,4 +1,4 @@
-package SlidingTablayout;
+package com.example.emd029.sqlite_task.SlidingTablayout;
 
 import android.R;
 import android.content.Context;

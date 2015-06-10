@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ></include>
-    <SlidingTablayout.SlidingTabLayout
+    <com.example.emd029.sqlite_task.SlidingTablayout.SlidingTabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/ColorPrimary"
         android:elevation="2dp"
         android:id="@+id/slidingtablayout">
-    </SlidingTablayout.SlidingTabLayout>
+    </com.example.emd029.sqlite_task.SlidingTablayout.SlidingTabLayout>
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"

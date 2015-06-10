@@ -1,4 +1,4 @@
-package SlidingTablayout;
+package com.example.emd029.sqlite_task.SlidingTablayout;
 /*
  * Copyright 2014 Google Inc. All rights reserved.
  *

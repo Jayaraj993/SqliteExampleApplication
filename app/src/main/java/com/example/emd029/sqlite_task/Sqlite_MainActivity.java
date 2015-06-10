@@ -1,35 +1,17 @@
 package com.example.emd029.sqlite_task;
 
 
-import android.app.ActionBar;
-import android.app.SearchManager;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 
 import android.os.Bundle;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import SlidingTablayout.SlidingTabLayout;
-import SlidingTablayout.Tab1;
-import SlidingTablayout.ViewPagerAdapter;
+import com.example.emd029.sqlite_task.SlidingTablayout.SlidingTabLayout;
+import com.example.emd029.sqlite_task.SlidingTablayout.ViewPagerAdapter;
 
 public class Sqlite_MainActivity extends AppCompatActivity {
 //TextView textView;
